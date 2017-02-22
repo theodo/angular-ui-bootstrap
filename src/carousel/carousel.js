@@ -251,7 +251,7 @@ angular.module('ui.bootstrap.carousel', [])
   function timerFn() {
     var interval = +$scope.interval;
     if (isPlaying && !isNaN(interval) && interval > 0 && slides.length) {
-      $scope.next();
+      $scope.direction === 'rtl'? $scope.prev():$scope.next();
     } else {
       $scope.pause();
     }
@@ -270,6 +270,8 @@ angular.module('ui.bootstrap.carousel', [])
     scope: {
       active: '=',
       interval: '=',
+      // direction : 'ltr' or 'rtl', default to 'ltr'
+      direction: '@?'
       noTransition: '=',
       noPause: '=',
       noWrap: '&'
